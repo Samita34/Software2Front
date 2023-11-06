@@ -27,7 +27,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 # HISTORIAS
 # ANÁLISIS Y DISEÑO DE SOFTWARE
 ## Valor
-
+Ofrecer inspiración culinaria, facilitar la gestión de ingredientes y compras, permitir la búsqueda de recetas específicas, explorar nuevas cocinas y dietas, optimizar la planificación de comidas, fomentar la interacción social y comunidad, promover recetas saludables y equilibradas, agilizar el tiempo en la cocina y ofrecer personalización y seguimiento de recetas favoritas. 
 ## Historias de usuario
 10. Ingreso
 20. Registro de usuario

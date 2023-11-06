@@ -16,7 +16,7 @@ El usuario deja un comentario o experiencia al seguir la receta. <br>
 Se debe dejar una calificación junto con el comentario, esta calificación va de 0 a 5 estrellas.<br>
 Al enviar el comentario será visible para los demás usuarios.<br>
 
-FOTO
+![Alt text](/historias/imagenes/comentarios_receta.png)
 
 ## Validación de datos
 Dado: <br>

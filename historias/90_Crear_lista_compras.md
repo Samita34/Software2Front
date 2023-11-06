@@ -10,7 +10,7 @@ Para: Realizar las recetas <br>
 A continuación se presenta la pantalla de lista de compras cuyo funcionamiento es:<br>
 El usuario crea una nueva lista de compras donde puede dividir esta misma en las distintas categorías.<br>
 
-FOTO
+![Alt text](/historias/imagenes/crea_lista_compras.png)
 
 ## Validación de datos
 Dado: Que se añadieron nuevos productos<br>

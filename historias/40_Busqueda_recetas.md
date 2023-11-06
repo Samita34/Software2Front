@@ -13,9 +13,7 @@ El usuario debe ingresar al menos una palabra para que se muestren los resultado
 A continuación se presenta la pantalla de búsqueda, cuyo funcionamiento es:
 El usuario ingresa el nombre de la receta que desea encontrar.<br>
 
-
-
-FOTO
+![Alt text](/historias/imagenes/busqueda.png)
 
 ## Validación de datos
 Dado: Que el nombre está bien escrito<br>

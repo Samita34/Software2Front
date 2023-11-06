@@ -14,7 +14,7 @@ El usuario ingresa en la pantalla
 Puede cambiar su foto que debe estar lista previamente
 También puede cambiar su contraseña, verificando la contraseña actual previamente 
 
-FOTO
+![Alt text](/historias/imagenes/editar_perfil_usuario.png)
 
 ## Validación de datos
 Dado: Que el usuario cambió correctamente sus datos personales

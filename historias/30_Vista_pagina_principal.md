@@ -13,7 +13,7 @@ El usuario puede observar distintas recetas, entre las cuales se encuentran las 
 El usuario puede ingresar en la que desee para ver los detalles.<br>
 También cuenta con una barra de búsqueda y un navbar que permite el acceso rápido a otras funciones.<br>
 
-FOTO
+![Alt text](/historias/imagenes/home.png)
 
 ## Validación de datos
 Dado: <br>

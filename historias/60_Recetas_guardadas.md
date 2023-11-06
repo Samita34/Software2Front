@@ -12,7 +12,8 @@ El usuario debe estar registrado.<br>
 A continuación se presenta la pantalla de recetas guardadas cuyo funcionamiento es:<br>
 El usuario guarda una receta en los detalles de esta.<br>
 Para eliminar de guardados debe entrar a los detalles y desmarcar <br>
-FOTO
+
+![Alt text](/historias/imagenes/recetas_guardadas.png)
 
 ## Validación de datos
 Dado: Que se guarda la receta<br>

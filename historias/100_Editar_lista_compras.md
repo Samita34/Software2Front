@@ -11,7 +11,7 @@ A continuación se presenta la pantalla de lista de compras cuyo funcionamiento 
 El usuario elimina o añade productos a su lista personalizada<br>
 El usuario también puede eliminar la lista completa.<br>
 
-FOTO
+![Alt text](/historias/imagenes/editar_lista_compras.png)
 
 ## Validación de datos
 Dado: Que se modificaron productos<br>

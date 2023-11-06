@@ -14,7 +14,7 @@ El usuario ingresa sus datos: nombre de usuario y contraseña. <br>
 Otra alternativa es ingresar con correo electrónico
 Presionar el botón de inicio de sesión
 
-![Alt text](/imagenes/ingreso.png)
+![Alt text](/historias/imagenes/ingreso.png)
 
 ## Validación de datos
 Dado: Que los datos ingresados coinciden con la base de datos.<br>

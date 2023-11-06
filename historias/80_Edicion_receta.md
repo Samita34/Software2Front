@@ -19,7 +19,7 @@ El usuario que escribe la receta cambia los datos necesarios.<br>
 El usuario guarda los cambios realizados (adicionar elementos o quitar)<br>
 También el usuario puede eliminar toda la receta.<br>
 
-FOTO
+![Alt text](/historias/imagenes/editar_receta.png)
 
 ## Validación de datos
 Dado: Que se cambiaron los campos<br>

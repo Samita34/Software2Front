@@ -12,7 +12,7 @@ El usuario ingresa en la pantalla<br>
 Observa sus datos personales<br>
 Se tiene un botón para editar sus datos<br>
 
-FOTO
+![Alt text](/historias/imagenes/perfil_usuario.png)
 
 ## Validación de datos
 Dado:<br>

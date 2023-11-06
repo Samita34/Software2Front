@@ -18,7 +18,7 @@ A continuación se presenta la pantalla de recetas guardadas cuyo funcionamiento
 El usuario que escribe la receta llena los campos correspondientes.<br>
 Se puede añadir una imagen del resultado de la receta que debe estar preparada.<br>
 
-FOTO
+![Alt text](/historias/imagenes/publicar_receta.png)
 
 ## Validación de datos
 Dado: Que se llenaron todos los campos<br>

@@ -21,4 +21,53 @@ Cuando: <br>
 Entonces: <br>
 
 
-## API’s
+## API’s - Diseño
+1. Obtener recetas para la página de inicio
+
+Request:
+```
+GET BASE_URL/api/v1/home
+Accept: Application/json
+```
+
+Response: Exitoso statusCode: 200
+```
+{
+  "populares": [
+    {
+      "idReceta": "001",
+      "nombre": "Trucha",
+      "imagen": "urlImagenTrucha",
+      "descripcionCorta": "Trucha asada al estilo mediterráneo."
+    },
+    {
+      "idReceta": "002",
+      "nombre": "Sushi",
+      "imagen": "urlImagenSushi",
+      "descripcionCorta": "Surtido de sushi con pescado fresco."
+    },
+  ],
+  "sugerencias": [
+    {
+      "idReceta": "003",
+      "nombre": "Pollo al curry",
+      "imagen": "urlImagenPolloCurry",
+      "descripcionCorta": "Curry aromático con trozos de pollo."
+    },
+    {
+      "idReceta": "004",
+      "nombre": "Pollo al horno",
+      "imagen": "urlImagenPolloHorno",
+      "descripcionCorta": "Pollo al horno con hierbas provenzales."
+    },
+  ]
+}
+```
+
+Response: Error statusCode: 500 (Internal Server Error)
+```
+{
+  "error": "Internal Server Error",
+  "message": "No se pudo obtener la información de las recetas."
+}
+```

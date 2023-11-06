@@ -25,4 +25,69 @@ Dado: Que se llenaron todos los campos<br>
 Cuando: El usuario desea publicar una receta<br>
 Entonces: La receta puede ser publicada <br>
 
-## API’s
+## API’s - Diseño
+1. Publicar una nueva receta
+
+Request:
+```
+POST BASE_URL/api/v1/uploadrecipe
+Content-Type: multipart/form-data
+Authorization: Bearer {token}
+
+{
+  "nombre": "Pollo al horno",
+  "categoria": "CategoriaSeleccionada", 
+  "porciones": 4,
+  "tiempoPreparacion": "45 minutos",
+  "ingredientes": [
+    {
+      "nombre": "pollo entero",
+      "cantidad": 1,
+      "unidad": "unidad",
+      "calorias": 50
+    },
+    {
+      "nombre": "tomate",
+      "cantidad": 3,
+      "unidad": "unidad",
+      "calorias": 30
+    },
+  ],
+  "preparacion": "Texto detallado de los pasos de preparación...",
+  "imagen": "ArchivoDeImagen.jpg"
+}
+```
+
+Response: Exitoso statusCode: 200
+```
+{
+  "message": "Receta publicada exitosamente.",
+  "idReceta": "123456", 
+  "urlReceta": "BASE_URL/recipes/123456" 
+}
+```
+
+Response: Error statusCode: 400 (Bad Request)
+```
+{
+  "error": "Datos inválidos",
+  "message": "Falta información necesaria o el formato de los datos no es correcto."
+}
+```
+
+Response: Error statusCode: 401 (Unauthorized)
+```
+{
+  "error": "No autorizado",
+  "message": "Es necesario iniciar sesión para publicar una receta."
+}
+```
+
+Response: Error statusCode: 500 (Internal Server Error)
+```
+{
+  "error": "Error del servidor",
+  "message": "No se pudo procesar la subida de la receta."
+}
+```
+

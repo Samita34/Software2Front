@@ -19,4 +19,39 @@ Dado:<br>
 Cuando: <br>
 Entonces: <br>
 
-## API’s
+## API’s - Diseño
+1. Obtener la información del perfil del usuario
+
+Request:
+```
+GET  BASE_URL/api/v1/profile
+Accept: Application/json
+Authorization: Bearer {token}
+```
+
+Response: Exitoso statusCode: 200
+```
+{
+  "nombre": "Juan",
+  "apellido": "Perez",
+  "usuario": "junitoxd",
+  "correo": "juanito123@gmail.com",
+}
+```
+
+Response: Error statusCode: 401 (Unauthorized)
+```
+{
+  "error": "No autorizado",
+  "message": "Es necesario iniciar sesión para acceder a la información del perfil."
+}
+```
+
+Response: Error statusCode: 500 (Internal Server Error)
+```
+{
+  "error": "Error del servidor",
+  "message": "No se pudo obtener la información del perfil."
+}
+```
+

@@ -17,7 +17,7 @@ Se validan los datos y se da una respuesta.<br>
 Si el registro fue exitoso ingresa.<br>
 De lo contrario, se pide que modifique sus datos.<br>
 
-![Alt text](/pantallas/registro.png)
+![Alt text](/historias/imagenes/registro.png)
 
 ## Validación de datos
 Dado: Que los datos ingresados son válidos.<br>

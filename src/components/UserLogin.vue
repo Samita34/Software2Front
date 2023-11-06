@@ -8,18 +8,22 @@
     </div>
     
     <div class="right-section">
-      <h2>Sign In or Sign Up</h2>
-      <form @submit.prevent="handleSubmit">
-        <input type="text" v-model="fullName" placeholder="Enter your full name">
-        <input type="password" v-model="password" placeholder="*******">
-        <input type="email" v-model="email" placeholder="Your email goes here">
-        <div class="terms">
-          <input type="checkbox" v-model="agreeTerms">
-          <label>I agree all statements in terms of service</label>
-        </div>
-        <button type="submit">Sign Up</button>
-        <p>I'm already a member</p>
-      </form>
+      <!-- Agregar los botones Login y Sign Up aquí -->
+      <div class="buttons">
+        <button class="minimal-button" @click="showLogin" :disabled="showLoginForm">Login</button>
+        <button class="minimal-button" @click="showSignUp" :disabled="!showLoginForm">Sign Up</button>
+      </div>
+      <div class="form-container">
+        <transition name="carousel-slide" mode="out-in">
+          <form :key="formKey" @submit.prevent="handleFormSubmit" class="slide-form">
+            <!-- Campos de inicio de sesión o registro -->
+            <input type="text" v-model="fullName" placeholder="Enter your full name">
+            <input type="password" v-model="password" placeholder="*******">
+            <input v-if="showSignUpForm" type="password" v-model="confirmPassword" placeholder="Confirm Password">
+            <button type="submit">{{ showSignUpForm ? 'Sign Up' : 'Login' }}</button>
+          </form>
+        </transition>
+      </div>
     </div>
   </div>
 </template>
@@ -29,21 +33,48 @@ export default {
   name: 'UserLogin',
   data() {
     return {
+      showLoginForm: true, // Estado para mostrar el formulario de inicio de sesión
       fullName: '',
       password: '',
-      email: '',
-      agreeTerms: false
+      confirmPassword: '', // Campo de confirmación de contraseña
+      formKey: 'login',
     };
   },
+  computed: {
+    showSignUpForm() {
+      return !this.showLoginForm;
+      
+    },
+
+    
+  },
   methods: {
-    handleSubmit() {
-      console.log('Submitting form:', this.fullName, this.password, this.email);
-    }
-  }
-}
+    showLogin() {
+      if (!this.showLoginForm) {
+        this.showLoginForm = true;
+        this.formKey = 'login';
+      }
+    },
+    showSignUp() {
+      if (this.showLoginForm) {
+        this.showLoginForm = false;
+        this.formKey = 'signup';
+        // Establecer la clave para la animación de deslizamiento
+      }
+    },
+    handleFormSubmit() {
+      if (this.showSignUpForm) {
+        // Lógica para manejar el registro
+      } else {
+        // Lógica para manejar el inicio de sesión
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
+/* Estilos para tu componente */
 body {
   font-family: 'Arial', sans-serif;
   background: #7CCECA;
@@ -52,7 +83,7 @@ body {
 
 .login-container {
   display: flex;
-  width: 80%;  
+  width: 70%;  
   height: 70vh; 
   margin: auto;
   position: absolute;
@@ -73,7 +104,7 @@ body {
 }
 
 .right-section {
-  flex: 1; 
+  flex: 1.2; 
   background: #D1D1D9;
   padding: 20px;
   display: flex;
@@ -114,5 +145,36 @@ button {
   cursor: pointer;
   background: #FB8561;
   color: #D1D1D9;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.minimal-button {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  color: #007566;
+  cursor: pointer;
+}
+
+.minimal-button:hover {
+  text-decoration: underline;
+}
+
+.form-container {
+  overflow: hidden; /* Para ocultar cualquier contenido que se desborde */
+}
+
+.carousel-slide-enter-active, .carousel-slide-leave-active {
+  transition: all 0.5s ease;
+}
+
+.carousel-slide-enter, .carousel-slide-leave-to {
+  transform: translateX(-100%); /* Comienza fuera del contenedor (a la izquierda) */
+  opacity: 0;
 }
 </style>

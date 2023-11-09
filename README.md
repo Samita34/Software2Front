@@ -1,4 +1,4 @@
-# frontsoft
+![image](https://github.com/Samita34/Software2Front/assets/104600276/115592b1-1c4f-4de9-a9d6-789a36e3c764)# frontsoft
 
 ## Project setup
 ```
@@ -42,4 +42,7 @@ Ofrecer inspiración culinaria, facilitar la gestión de ingredientes y compras,
 100. Editar lista de compras
 110. Perfil de usuario
 120. Editar perfil de usuario
+
+# BASE DE DATOS
+
 

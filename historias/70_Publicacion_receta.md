@@ -91,3 +91,4 @@ Response: Error statusCode: 500 (Internal Server Error)
 }
 ```
 
+## Tablas de base de datos

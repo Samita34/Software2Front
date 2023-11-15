@@ -71,3 +71,7 @@ Response: Error statusCode: 500 (Internal Server Error)
   "message": "No se pudo obtener la información de las recetas."
 }
 ```
+## Tabla de base de datos
+### Queries
+1. **Página de Inicio (Búsqueda de recetas):**
+     SELECT * FROM Recetas;

@@ -1,9 +1,5 @@
 <template>
     <div id="app">
-      <header>
-        <!-- Your header content, possibly the Navbar component -->
-      </header>
-  
       <main>
         <div class="search-container">
           <!-- Search input with button -->
@@ -64,7 +60,7 @@
           // Populate with your recipe data
         ],
         mexicanRecipes: [],
-        maxVisibleRecipes: 7,
+        maxVisibleRecipes: 5,
       startIndex: 0,
       }
     },
@@ -169,10 +165,11 @@ addAnimationClass() {
   }
   
   .recipe-card {
-    display: inline-block;
-    margin: 0 10px;
-    text-align: left;
-  }
+  display: inline-block;
+  margin: 0 20px; /* Aumenta el valor de los márgenes laterales */
+  text-align: left;
+  padding-bottom: 20px; /* Agrega un margen en la parte inferior */
+}
   
   .recipe-card img {
     width: 100%;
@@ -203,8 +200,8 @@ addAnimationClass() {
 
 
 .carousel-item {
-  flex: 0 0 calc((100% - (10px * 7)) / 8); /* Ajusta el ancho para 8 elementos teniendo en cuenta el margen */
-  margin-right: 10px;
+  flex: 0 0 calc((100% - (10px * 7)) / 6); /* Ajusta el ancho para 8 elementos teniendo en cuenta el margen */
+  margin-right: 30px;
   scroll-snap-align: start;
 }
 
@@ -221,7 +218,7 @@ addAnimationClass() {
 .carousel-button {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-40%);
   background-color: #7f54db; /* Añade el color de fondo de tu preferencia */
   color: white;
   border: none;
@@ -248,7 +245,7 @@ addAnimationClass() {
 }
 
 .fade-animation {
-  animation: fadeEffect 0.5s ease-in-out;
+  animation: fadeEffect 0.4s ease-in-out;
 }
 
 @keyframes fadeEffect {

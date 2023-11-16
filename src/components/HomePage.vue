@@ -141,6 +141,7 @@
       </section>
       
     </main>
+  <button @click="toggleDarkMode" class="dark-mode-button">Modo Oscuro</button>
   </div>
 </template>
 
@@ -426,6 +427,10 @@ scrollIngredientCarousel(direction) {
     });
   }
 },
+toggleDarkMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+  },
 
     search() {
       // Implement your search logic here
@@ -605,4 +610,64 @@ h3 {
     opacity: 0.5;
   }
 }
+
+.dark-mode-button {
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  padding: 10px 20px;
+  background-color: #555;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dark-mode-button:hover {
+  background-color: #333;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-mode .search-bar
+{
+  background-color: #333;
+  color: white;
+  border-color: #444;
+}
+
+body.dark-mode .search-button
+{
+  background-color: #7f54db;
+  color: white;
+}
+
+body.dark-mode .recipe-card
+{
+  background-color: #333;
+  color: white;
+}
+
+body.dark-mode {
+  background-color: #121212; /* Fondo oscuro */
+  color: #ffffff; /* Letra blanca para el contenido general */
+}
+
+body.dark-mode h2,
+body.dark-mode h3 {
+  color: #e0e0e0; /* Color de letra claro para los encabezados */
+}
+
+body.dark-mode .search-bar,
+body.dark-mode .search-button,
+body.dark-mode .carousel-button {
+  background-color: #333; /* Fondo más oscuro para botones y barras de búsqueda */
+  color: white; /* Letra blanca para botones y barras de búsqueda */
+  border-color: #444;
+}
+
+
 </style>

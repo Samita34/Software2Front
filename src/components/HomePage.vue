@@ -512,8 +512,8 @@ h3 {
 }
 
 .carousel-item {
-  flex: 0 0 calc((100% - (10px * 7)) / 8); /* Ajusta el ancho para 8 elementos teniendo en cuenta el margen */
-  margin-right: 10px;
+  flex: 0 0 calc((100% - (10px * 7)) / 6); /* Ajusta el ancho para 8 elementos teniendo en cuenta el margen */
+  margin-right: 30px;
   scroll-snap-align: start;
 }
 
@@ -530,7 +530,7 @@ h3 {
 .carousel-button {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-40%);
   background-color: #7f54db; /* Añade el color de fondo de tu preferencia */
   color: white;
   border: none;
@@ -594,7 +594,7 @@ h3 {
 }
 
 .fade-animation {
-  animation: fadeEffect 0.5s ease-in-out;
+  animation: fadeEffect 0.4s ease-in-out;
 }
 
 @keyframes fadeEffect {

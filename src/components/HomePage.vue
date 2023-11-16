@@ -160,7 +160,7 @@ export default {
       areaRecipes: [],
       categoryRecipes: [],
       ingredientRecipes: [],
-      maxVisibleRecipes: 7,
+      maxVisibleRecipes: 6,
       startIndex: 0,
       startSuggestionIndex:0,
       startCategoryIndex: 0,
@@ -210,7 +210,7 @@ export default {
     async fetchRandomRecipes() {
   try {
     const randomRecipes = [];
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 6; i++) {
       const response = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
       const data = await response.json();
       const recipe = data.meals[0]; // Obtener la receta aleatoria
@@ -517,8 +517,8 @@ h3 {
 }
 
 .carousel-item {
-  flex: 0 0 calc((100% - (10px * 7)) / 6); /* Ajusta el ancho para 8 elementos teniendo en cuenta el margen */
-  margin-right: 30px;
+  flex: 0 0 calc((100% - (10px * 7)) / 7); /* Ajusta el ancho para 8 elementos teniendo en cuenta el margen */
+  margin-right: 20px;
   scroll-snap-align: start;
 }
 

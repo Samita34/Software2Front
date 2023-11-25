@@ -1,10 +1,6 @@
 <template>
   <div id="app">
-    <header>
-      <!-- Your header content, possibly the Navbar component -->
-    </header>
-
-    <main>
+      <NavbarComponent/>
       <div class="search-container">
         <!-- Search input with button -->
         <input
@@ -15,6 +11,7 @@
         />
         <button @click="search" class="search-button">Buscar</button>
       </div>
+  
 
       <section class="popular-recipes">
         <h2>Populares</h2>
@@ -139,14 +136,19 @@
           </button>
         </div>
       </section>
-      
-    </main>
+
   <button @click="toggleDarkMode" class="dark-mode-button">Modo Oscuro</button>
   </div>
 </template>
 
 <script>
+import NavbarComponent from "../components/NavbarComponent.vue";
 export default {
+
+  components: {
+    NavbarComponent,
+  },
+
   data() {
     return {
       searchQuery: "",

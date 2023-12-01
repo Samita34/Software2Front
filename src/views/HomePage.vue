@@ -2,15 +2,15 @@
   <div id="app">
       <NavbarComponent/>
       <div class="search-container">
-        <!-- Search input with button -->
-        <input
-          type="text"
-          v-model="searchQuery"
-          placeholder="Busque una receta o ingrediente"
-          class="search-bar"
-        />
-        <button @click="search" class="search-button">Buscar</button>
-      </div>
+    <input
+      type="text"
+      v-model="searchQuery"
+      placeholder="Busque una receta o ingrediente"
+      class="search-bar"
+      @keyup.enter="search" 
+    />
+    <button @click="search" class="search-button">Buscar</button>
+  </div>
   
 
       <section class="popular-recipes">
@@ -434,8 +434,13 @@ toggleDarkMode() {
     body.classList.toggle('dark-mode');
   },
 
-    search() {
-      // Implement your search logic here
+  search() {
+      if (!this.searchQuery) {
+        alert('Por favor ingrese un término de búsqueda.');
+        return;
+      }
+      // Usa el router para navegar a la página de búsqueda con el término de búsqueda como parámetro de consulta
+      this.$router.push({ name: 'search-page', query: { s: this.searchQuery } });
     },
   },
 };

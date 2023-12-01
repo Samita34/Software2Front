@@ -94,7 +94,7 @@
   margin: 20; /* Esto quitará el margen por defecto */
   padding: 20;
   padding-right: 20;
-  flex: 2; /* Esto quitará el padding por defecto */
+  
 }
 
 .recipe-details li {

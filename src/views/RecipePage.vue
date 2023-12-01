@@ -27,10 +27,43 @@
       </section>
     </main>
   </div>
+  <section class="leave-comment">
+  <h2>Deja un comentario</h2>
+  <form @submit.prevent="submitComment">
+  <div class="rating">
+    <span v-for="index in 5" :key="'rating-' + index"
+          class="star"
+          :class="{ 'rated': newComment.rating >= index }"
+          @click="setRating(index)">
+          ★
+    </span>
+  </div>
+
+  <!-- Área de texto para el comentario -->
+  <textarea v-model="newComment.text" placeholder="Tu comentario" required></textarea>
+  
+  <!-- Botón para enviar el comentario -->
+  <button type="submit">Enviar comentario</button>
+</form>
+</section>
+  <section class="comments-section">
+    <h2>Comentarios</h2>
+    <div v-for="comment in comments" :key="comment.id" class="comment">
+      <div class="comment-body">
+        <div class="comment-author">{{ comment.author }}</div>
+        <div class="comment-rating">
+          <!-- Aquí se puede generar las estrellas de calificación basadas en comment.rating -->
+          <span v-for="index in 5" :key="index" :class="index <= comment.rating ? 'filled-star' : 'empty-star'">★</span>
+        </div>
+        <div class="comment-text">{{ comment.text }}</div>
+      </div>
+    </div>
+  </section>
 </template>
 
-  
+
   <script>
+  import axios from 'axios';
   import NavbarComponent from "../components/NavbarComponent.vue";
   export default {
     name: 'RecipePage',
@@ -38,38 +71,105 @@
     NavbarComponent,
   },
 
-    data() {
-  return {
-    recipeTitle: 'Pique Macho',
-    recipeImage: require('@/assets/pique-macho-3-FP.jpg'),
-    ingredients: [
-      { id: 1, name: 'cubos de carne de res', quantity: '500g' },
-      { id: 2, name: 'salchichas', quantity: '200g' },
-      { id: 3, name: 'cebollas', quantity: '2 medianas' },
-      { id: 4, name: 'dientes de ajo', quantity: '3' },
-      { id: 5, name: 'papas', quantity: '3 grandes' },
-      { id: 6, name: 'tomates', quantity: '2' },
-      { id: 7, name: 'locotos o pimientos picantes', quantity: 'al gusto' },
-      { id: 8, name: 'comino', quantity: '1 cucharadita' },
-      { id: 9, name: 'vinagre', quantity: '1 cucharada' },
-      { id: 10, name: 'cerveza', quantity: '1 taza' },
-      { id: 11, name: 'pimienta', quantity: 'al gusto' },
-      { id: 12, name: 'sal', quantity: 'al gusto' },
-      { id: 13, name: 'aceite vegetal', quantity: 'suficiente para freír' }
-    ],
-    preparationSteps: [
-      { id: 1, description: 'En un sartén grande, calentar el aceite a fuego medio.' },
-      { id: 2, description: 'Agregar los cubos de carne de res y las salchichas, cocinar hasta que estén dorados.' },
-      { id: 3, description: 'Añadir las cebollas y ajo picados al sartén y sofreír hasta que las cebollas estén tiernas y transparentes.' },
-      { id: 4, description: 'Incorporar los tomates y locotos picados. Cocinar por unos minutos hasta que los tomates se ablanden.' },
-      { id: 5, description: 'Agregar el comino, vinagre y la cerveza a la mezcla en el sartén. Cocinar por unos minutos hasta que el líquido se reduzca y la mezcla esté bien sazonada. Añadir sal y pimienta al gusto.' },
-      { id: 6, description: 'En paralelo, freír las papas cortadas en forma de bastones hasta que estén doradas y tiernas.' },
-      { id: 7, description: 'Servir el Pique Macho en platos individuales, colocando la mezcla de carne y salchichas sobre las papas fritas y decorando con huevo duro, tomate y perejil picado por encima.' }
-    ],
-  };
-},
-  };
-  </script>
+  data() {
+    return {
+      recipeTitle: 'Pique Macho',
+      recipeImage: require('@/assets/pique-macho-3-FP.jpg'),
+      ingredients: [
+      ],
+      preparationSteps: [
+      ],
+      comments: [],
+      ratings: [],
+      newComment: {
+        author: '',
+        text: '',
+        rating: 0,
+      },
+    };
+  },
+created() {
+    this.fetchComments();
+    this.fetchRatings();
+  },
+  methods: {
+    fetchComments() {
+      axios.get('http://localhost:8080/api/v1/comentario/listar')
+        .then(response => {
+          this.comments = response.data;
+        })
+        .catch(error => {
+          console.error('Hubo un error al obtener los comentarios:', error);
+        });
+    },
+    fetchRatings() {
+      axios.get('http://localhost:8080/api/v1/calificacion/listar')
+        .then(response => {
+          this.ratings = response.data;
+        })
+        .catch(error => {
+          console.error('Hubo un error al obtener las calificaciones:', error);
+        });
+    },
+    submitComment() {
+    const commentToSubmit = {
+      recetaID: 1, 
+      userID: 1, 
+      textoComentario: this.newComment.text,
+      
+    };
+
+    axios.post('http://localhost:8080/api/v1/comentario/crear', commentToSubmit)
+      .then(response => {
+        this.comments.unshift(response.data);
+        this.newComment.text = '';
+        this.newComment.rating = 0;
+      })
+      .catch(error => {
+        console.error('Hubo un error al enviar el comentario:', error);
+      });
+  },
+
+  submitRating() {
+    const ratingToSubmit = {
+      recetaID: 1, 
+      userID: 1, 
+      puntuacion: this.newComment.rating, 
+    };
+
+    axios.post('http://localhost:8080/api/v1/calificacion/crear', ratingToSubmit)
+      .then(response => {
+        this.ratings.unshift(response.data);
+        this.newComment.rating = 0;
+      })
+      .catch(error => {
+        console.error('Hubo un error al enviar la calificación:', error);
+      });
+  },
+    submitCommentAndRating() {
+      this.submitComment();
+      this.submitRating();
+    },
+    setRating(rating) {
+      this.newComment.rating = rating;
+    },
+    
+    fetchRecipe() {
+      axios.get('http://localhost:8080/api/v1/receta/1') 
+        .then(response => {
+          const recipeData = response.data;
+          this.recipeTitle = recipeData.nombreReceta;
+          this.ingredients = recipeData.ingredientes; 
+          this.preparationSteps = recipeData.procedimiento;
+        })
+        .catch(error => {
+          console.error('Hubo un error al obtener la receta:', error);
+        });
+    },
+  },
+}
+</script>
+
   
   <style scoped>
   .recipe-content {
@@ -85,28 +185,104 @@
   
   .recipe-image {
     flex: 1;
-    /* Ajusta el padding según sea necesario para alinear con la lista de ingredientes */
     padding-right: 20px;
   }
   
   .recipe-details ul {
-  list-style: none; /* Esto quitará los puntos (bullets) */
-  margin: 20; /* Esto quitará el margen por defecto */
+  list-style: none; 
+  margin: 20; 
   padding: 20;
   padding-right: 20;
   
 }
 
 .recipe-details li {
-  line-height: 2; /* Ajusta el valor para aumentar el interlineado como desees */
+  line-height: 2; 
 }
   
-  /* Asegúrate de que las imágenes no sean demasiado grandes */
   .recipe-image img {
     max-width: 100%;
     height: auto;
   }
   
-  /* Estilos adicionales para alinear el contenido como lo necesites */
-  </style>
+.comments-section {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.comment {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.comment-avatar img {
+  width: 50px; 
+  height: 50px;
+  border-radius: 50%; 
+}
+
+.comment-body {
+  margin-left: 10px;
+}
+
+.comment-author {
+  font-weight: bold;
+}
+
+
+.filled-star {
+  color: gold;
+}
+
+.empty-star {
+  color: lightgray;
+}
+
+.comment-text {
+  margin-top: 5px;
+}
+.leave-comment {
+  margin-top: 20px;
+}
+
+.leave-comment input,
+.leave-comment textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.leave-comment .rating {
+  display: flex;
+  justify-content: center;
+}
+
+.leave-comment .rating label {
+  cursor: pointer;
+}
+
+.leave-comment .rating input[type="radio"] {
+  display: none;
+}
+
+.leave-comment .rating label:before {
+  content: '★';
+  font-size: 25px;
+  color: lightgray;
+}
+
+.leave-comment .rating input[type="radio"]:checked + label:before {
+  color: gold;
+}
+.rating .star {
+  cursor: pointer;
+  font-size: 25px;
+  color: lightgray;
+}
+
+.rating .rated {
+  color: gold;
+}
+ </style>
   
